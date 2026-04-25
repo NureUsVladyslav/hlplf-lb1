@@ -1,0 +1,26 @@
+{% extends "exchange/base.html" %} {% block content %}
+<h2>Збережені результати за {{ today }}</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Назва</th>
+      <th>Курс купівлі</th>
+      <th>Курс продажу</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in snapshots %}
+    <tr>
+      <td>{{ item.currency.name }}</td>
+      <td>{{ item.buy_rate }}</td>
+      <td>{{ item.sell_rate }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3">На сьогодні ще нічого не збережено.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
